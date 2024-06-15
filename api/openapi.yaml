@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: Calculator API
+  description: API for caculations
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/calc-api/1.0.0
+    description: Calculator API Production Server
+security:
+  - BearerAuth: []
+paths:
+  /calculate:
+    post:
+      tags:
+        - Calculator
+      operationId: calculate_operation
+      parameters:
+        - name: operation
+          in: header
+          description: The operation to perform
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            enum:
+              - add
+              - subtract
+              - multiply
+              - divide
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CalculationParams"
+        required: true
+      responses:
+        "200":
+          description: The result of the operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200"
+        "400":
+          description: Invalid input - The operation or the input numbers are not valid
+        "401":
+          description: Unauthorized - The request lacks valid authentication credentials
+        "500":
+          description: Internal Server Error - An unexpected error occurred on the server
+        default:
+          description: Unexpected error
+      x-swagger-router-controller: Calculator
+components:
+  schemas:
+    CalculationParams:
+      type: object
+      properties:
+        num1:
+          type: number
+          description: The first number in the operation
+          example: 1
+        num2:
+          type: number
+          description: The second number in the operation
+          example: 2
+    inline_response_200:
+      type: object
+      properties:
+        result:
+          type: number
+          description: The result of the calculation
+      example:
+        result: 0.80082819046101150206595775671303272247314453125
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: JWT used for API authorization
+      scheme: bearer
+      bearerFormat: JWT
