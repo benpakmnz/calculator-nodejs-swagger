@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "jest"
   },
   "keywords": [
     "swagger"
@@ -19,5 +20,9 @@
     "js-yaml": "^3.3.0",
     "jsonwebtoken": "^9.0.2",
     "oas3-tools": "^2.2.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
