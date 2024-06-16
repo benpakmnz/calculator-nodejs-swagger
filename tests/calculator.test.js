@@ -7,7 +7,7 @@ describe("Calculator API", () => {
 
   beforeAll(() => {
     const mockUser = { id: 1, username: "testUser" };
-    token = jwt.sign(mockUser, process.env.SECRET_KEY);
+    token = jwt.sign(mockUser, process.env.SECRET_JWT_KEY);
   });
 
   it("should add two numbers correctly", async () => {

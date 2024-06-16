@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 describe("Bearer Authentication", () => {
   it("should authenticate a request with a valid token", async () => {
     const mockUser = { id: 1, username: "testUser" };
-    const token = jwt.sign(mockUser, process.env.SECRET_KEY);
+    const token = jwt.sign(mockUser, process.env.SECRET_JWT_KEY);
 
     const res = await request(app)
       .post("/calc-api/1.0.0/calculate")
