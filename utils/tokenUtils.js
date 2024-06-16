@@ -2,11 +2,8 @@ const jwt = require("jsonwebtoken");
 
 function verifyToken(secret) {
   return function (req, scope, schema) {
-    console.log("verifyToken");
     try {
       const bearerHeader = req.headers["authorization"];
-      console.log(bearerHeader);
-      console.log(secret);
       if (typeof bearerHeader !== "undefined") {
         const bearer = bearerHeader.split(" ");
         const bearerToken = bearer[1];
