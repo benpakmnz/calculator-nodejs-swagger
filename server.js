@@ -18,7 +18,7 @@ const options = {
   openApiValidator: {
     validateSecurity: {
       handlers: {
-        BearerAuth: verifyToken(process.env.SECRET_KEY),
+        BearerAuth: verifyToken(process.env.SECRET_JWT_KEY),
       },
     },
   },
