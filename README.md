@@ -24,11 +24,13 @@ In order to run the server using Docker
 run:
 
 ```
-
 docker build -t calculator-nodejs-swagger .
 docker run -p ${port of your choice }:8080 calculator-nodejs-swagger
 
-``
+```
 
 This project leverages the mega-awesome [swagger-tools](https://github.com/apigee-127/swagger-tools) middleware which does most all the work.
+
+```
+
 ```
